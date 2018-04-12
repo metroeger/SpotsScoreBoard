@@ -6,15 +6,16 @@ import Title from '../components/Title'
 import Podium from './Podium'
 import Spot, { spotShape } from '../components/Spot'
 import './Board.css'
+import {connect} from 'react-redux'
 
-export default class Board extends PureComponent {
+class Board extends PureComponent {
   static propTypes = {
-    spots: PropTypes.arrayOf(spotShape).isRequired,
-    updateSpot: PropTypes.func.isRequired
+    spots: PropTypes.arrayOf(spotShape).isRequired
+    //updateSpot: PropTypes.func.isRequired
   }
 
   render() {
-    const { spots, updateSpot } = this.props
+    const { spots } = this.props
 
     return (
       <div>
@@ -25,10 +26,9 @@ export default class Board extends PureComponent {
         <ul className="Board">
           {spots
             .sort((p1, p2) => (p2.score - p1.score))
-            .map((spot, index) => (
+            .map((spot, id) => (
             <Spot
-              key={index}
-              onChange={updateSpot}
+              key={id}
               { ...spot }
             />
           ))}
@@ -37,3 +37,7 @@ export default class Board extends PureComponent {
     )
   }
 }
+
+const mapStateToProps = ({spots}) => ({spots})
+
+export default connect (mapStateToProps) (Board)
