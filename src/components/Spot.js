@@ -6,7 +6,7 @@ import PlusOneButton from './PlusOneButton'
 import './Spot.css'
 import {connect} from 'react-redux'
 import {increaseSpotScore} from '../actions/spots'
-
+import MinusOneButton from './MinusOneButton'
 
 export const spotShape = PropTypes.shape({
   id: PropTypes.number.isRequired,
@@ -32,6 +32,7 @@ class Spot extends PureComponent {
     return (
       <li className="Spot">
         <p className="name">{name}</p>
+        <MinusOneButton />
         <p className="score">{score}</p>
         <PlusOneButton onClick={this.increaseScore} />
       </li>
