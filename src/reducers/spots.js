@@ -8,5 +8,14 @@ export const spots = [
 ]
 
 export default function (state=spots, {type, payload} = {}){
-  return state
+  switch (type){
+    case 'INCREASE_SPOT_SCORE':
+      return state.map((spot)=>{
+        if (spot.id !== payload) return spot
+        return {...spot, score: spot.score +1}
+      })
+
+    default:
+    return state
+  }
 }

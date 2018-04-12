@@ -11,7 +11,6 @@ import {connect} from 'react-redux'
 class Board extends PureComponent {
   static propTypes = {
     spots: PropTypes.arrayOf(spotShape).isRequired
-    //updateSpot: PropTypes.func.isRequired
   }
 
   render() {
