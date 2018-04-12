@@ -1,7 +1,7 @@
 // src/App.test.js
 import React from 'react'
 import { shallow } from 'enzyme'
-import App, { players } from './App'
+import App, { spots } from './App'
 import Board from './containers/Board'
 
 describe('<App />', () => {

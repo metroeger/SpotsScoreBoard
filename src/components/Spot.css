@@ -1,22 +1,22 @@
-/* src/components/Player.css */
+/* src/components/Spot.css */
 
-li.Player {
+li.Spot {
   display: flex;
   align-content: space-between;
   align-items: center;
   border: 1px solid #ccc;
 }
 
-li.Player p {
+li.Spot p {
   flex: 1;
   padding: 12px 24px;
   font-size: 150%;
 }
 
-li.Player p.name {
+li.Spot p.name {
   font-weight: bold;
 }
 
-li.Player p.score {
+li.Spot p.score {
   max-width: 50px;
 }

@@ -4,32 +4,32 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import Title from '../components/Title'
 import Podium from './Podium'
-import Player, { playerShape } from '../components/Player'
+import Spot, { spotShape } from '../components/Spot'
 import './Board.css'
 
 export default class Board extends PureComponent {
   static propTypes = {
-    players: PropTypes.arrayOf(playerShape).isRequired,
-    updatePlayer: PropTypes.func.isRequired
+    spots: PropTypes.arrayOf(spotShape).isRequired,
+    updateSpot: PropTypes.func.isRequired
   }
 
   render() {
-    const { players, updatePlayer } = this.props
+    const { spots, updateSpot } = this.props
 
     return (
       <div>
         <Title content="Scoreboard" />
 
-        <Podium players={players} />
+        <Podium spots={spots} />
 
         <ul className="Board">
-          {players
+          {spots
             .sort((p1, p2) => (p2.score - p1.score))
-            .map((player, index) => (
-            <Player
+            .map((spot, index) => (
+            <Spot
               key={index}
-              onChange={updatePlayer}
-              { ...player }
+              onChange={updateSpot}
+              { ...spot }
             />
           ))}
         </ul>

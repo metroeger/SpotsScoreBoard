@@ -1,23 +1,23 @@
-// src/components/Player.js
+// src/components/Spot.js
 
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import PlusOneButton from './PlusOneButton'
-import './Player.css'
+import './Spot.css'
 
-export const playerShape = PropTypes.shape({
+export const spotShape = PropTypes.shape({
   id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   score: PropTypes.number.isRequired
 })
 
-export default class Player extends PureComponent {
+export default class Spot extends PureComponent {
   static propTypes = {
-    ...playerShape.isRequired,
+    ...spotShape.isRequired,
     onChange: PropTypes.func.isRequired
   }
 
-  increasePlayerScore = () => {
+  increaseSpotScore = () => {
     const { id, score, onChange } = this.props
     onChange(id, { score: score + 1 })
   }
@@ -26,10 +26,10 @@ export default class Player extends PureComponent {
     const { name, score } = this.props
 
     return (
-      <li className="Player">
+      <li className="Spot">
         <p className="name">{name}</p>
         <p className="score">{score}</p>
-        <PlusOneButton onClick={this.increasePlayerScore} />
+        <PlusOneButton onClick={this.increaseSpotScore} />
       </li>
     )
   }

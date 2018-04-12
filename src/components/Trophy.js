@@ -2,12 +2,12 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import FontAwesome from 'react-fontawesome'
-import { playerShape } from './Player'
+import { spotShape } from './Spot'
 import './Trophy.css'
 
 export default class Trophy extends PureComponent {
   static propTypes = {
-    ...playerShape.isRequired,
+    ...spotShape.isRequired,
     trophy: PropTypes.string.isRequired
   }
 
