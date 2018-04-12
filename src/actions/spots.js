@@ -4,3 +4,10 @@ export const increaseSpotScore = (spotId) =>{
     payload: spotId
   }
 }
+
+export const decreaseSpotScore = (spotId) =>{
+  return {
+    type: 'DECREASE_SPOT_SCORE',
+    payload: spotId
+  }
+}

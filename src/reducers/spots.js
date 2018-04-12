@@ -14,6 +14,14 @@ export default function (state=spots, {type, payload} = {}){
         if (spot.id !== payload) return spot
         return {...spot, score: spot.score +1}
       })
+      case 'DECREASE_SPOT_SCORE':
+        return state.map((spot)=>{
+          if (spot.id !== payload) return spot
+          if (spot.score <= 0){
+            return {...spot, score: 0}
+          }
+          return {...spot, score: spot.score -1}
+        })
 
     default:
     return state

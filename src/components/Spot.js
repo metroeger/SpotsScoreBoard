@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import PlusOneButton from './PlusOneButton'
 import './Spot.css'
 import {connect} from 'react-redux'
-import {increaseSpotScore} from '../actions/spots'
+import {increaseSpotScore, decreaseSpotScore} from '../actions/spots'
 import MinusOneButton from './MinusOneButton'
 
 export const spotShape = PropTypes.shape({
@@ -17,7 +17,8 @@ export const spotShape = PropTypes.shape({
 class Spot extends PureComponent {
   static propTypes = {
     ...spotShape.isRequired,
-    increaseSpotScore: PropTypes.func.isRequired
+    increaseSpotScore: PropTypes.func.isRequired,
+    decreaseSpotScore: PropTypes.func.isRequired
 
   }
 
@@ -26,13 +27,18 @@ class Spot extends PureComponent {
     this.props.increaseSpotScore(id)
   }
 
+  decreaseScore = () => {
+    const { id } = this.props
+    this.props.decreaseSpotScore(id)
+  }
+
   render() {
     const { name, score } = this.props
 
     return (
       <li className="Spot">
         <p className="name">{name}</p>
-        <MinusOneButton />
+        <MinusOneButton onClick = {this.decreaseScore} />
         <p className="score">{score}</p>
         <PlusOneButton onClick={this.increaseScore} />
       </li>
@@ -41,7 +47,8 @@ class Spot extends PureComponent {
 }
 
 const mapDispatchToProps = {
-  increaseSpotScore
+  increaseSpotScore,
+  decreaseSpotScore
 }
 
 export default connect (null, mapDispatchToProps) (Spot)
